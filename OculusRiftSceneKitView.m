@@ -73,7 +73,7 @@ NSString *const kOCVRLensCorrectionFragmentShaderString = SHADER_STRING
  void main()
  {
      vec2 tc = HmdWarp(textureCoordinate);
-     if (!all(equal(clamp(tc, ScreenCenter-vec2(0.25,0.5), ScreenCenter+vec2(0.25,0.5)), tc)))
+     if (!all(equal(clamp(tc, ScreenCenter-vec2(0.5,0.5), ScreenCenter+vec2(0.5,0.5)), tc)))
          gl_FragColor = vec4(0);
      else
          gl_FragColor = texture2D(inputImageTexture, tc);
@@ -272,7 +272,8 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     [self.openGLContext makeCurrentContext];
 
 //    displayProgram = [[GLProgram alloc] initWithVertexShaderString:kOCVRLensCorrectionVertexShaderString fragmentShaderString:kOCVRLensCorrectionFragmentShaderString];
-    displayProgram = [[GLProgram alloc] initWithVertexShaderString:kOCVRVertexShaderString fragmentShaderString:kOCVRPassthroughFragmentShaderString];
+    displayProgram = [[GLProgram alloc] initWithVertexShaderString:kOCVRVertexShaderString fragmentShaderString:kOCVRLensCorrectionFragmentShaderString];
+//    displayProgram = [[GLProgram alloc] initWithVertexShaderString:kOCVRVertexShaderString fragmentShaderString:kOCVRPassthroughFragmentShaderString];
     [displayProgram addAttribute:@"position"];
     [displayProgram addAttribute:@"inputTextureCoordinate"];
     
@@ -332,20 +333,10 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     [self.openGLContext makeCurrentContext];
     [displayProgram use];
     
-//    glDisable(GL_DEPTH_TEST);
-//    glDisable(GL_BLEND);
-
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glBindRenderbuffer(GL_RENDERBUFFER, 0);    
     glViewport(0, 0, (GLint)self.bounds.size.width, (GLint)self.bounds.size.height);
-    
-//    glMatrixMode(GL_MODELVIEW);
-//    glLoadIdentity();
-//
-//    glMatrixMode(GL_PROJECTION);
-//    glLoadIdentity();
 
-    glClearDepth(0.0);
     glClearColor(0.0, 1.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     
@@ -359,9 +350,10 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     float h = 1.0;
     float x = 0.0;
     float y = 0.0;
-    float distortion = 0.151976;
-//    float scaleFactor = 0.583225;
-    float scaleFactor = 1.0;
+//    float distortion = 0.151976;
+    float distortion = 0.151976 * 2.0;
+    float scaleFactor = 0.583225;
+//    float scaleFactor = 1.0;
 //    float scaleFactor = 0.4;
     float as = 640.0 / 800.0;
     glUniform2f(scaleUniform, (w/2) * scaleFactor, (h/2) * scaleFactor * as);
@@ -396,11 +388,11 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     glBindTexture(GL_TEXTURE_2D, 0);
 
     // Right eye
-    w = 1.0;
-    h = 1.0;
-    x = 0.0;
-    y = 0.0;
-    distortion = -0.151976;
+//    w = 0.5;
+//    h = 1.0;
+//    x = 0.5;
+//    y = 0.0;
+    distortion = -0.151976 * 2.0;
     glUniform2f(lensCenterUniform, x + (w + distortion * 0.5f)*0.5f, y + h*0.5f);
     glUniform2f(screenCenterUniform, 0.5f, 0.5f);
 
@@ -457,8 +449,6 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
 
 - (void)renderer:(id <SCNSceneRenderer>)aRenderer willRenderScene:(SCNScene *)scene atTime:(NSTimeInterval)time;
 {
-    glDisable(GL_DEPTH_TEST);
-    
     [self.openGLContext makeCurrentContext];
 
     if (aRenderer == leftEyeRenderer)
@@ -482,8 +472,6 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
 
 - (void)renderer:(id <SCNSceneRenderer>)aRenderer didRenderScene:(SCNScene *)scene atTime:(NSTimeInterval)time;
 {
-    glEnable(GL_DEPTH_TEST);
-
     [self.openGLContext makeCurrentContext];
 
     if (aRenderer == leftEyeRenderer)
