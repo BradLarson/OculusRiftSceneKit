@@ -1,18 +1,24 @@
-# Xcode
+# Exclude the build directory
+build/*
+examples/FilterShowcase/build*
+ 
+# Exclude temp nibs and swap files
+*~.nib
+*.swp
+ 
+# Exclude OS X folder attributes
 .DS_Store
-build/
-*.pbxuser
-!default.pbxuser
+ 
+# Exclude user-specific XCode 3 and 4 files
+*.mode1
 *.mode1v3
-!default.mode1v3
 *.mode2v3
-!default.mode2v3
+*.perspective
 *.perspectivev3
-!default.perspectivev3
+*.pbxuser
 *.xcworkspace
-!default.xcworkspace
 xcuserdata
-profile
-*.moved-aside
-DerivedData
-.idea/
+
+# Documentation
+documentation/*
+
