@@ -457,6 +457,8 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
 
 - (void)renderer:(id <SCNSceneRenderer>)aRenderer willRenderScene:(SCNScene *)scene atTime:(NSTimeInterval)time;
 {
+    glDisable(GL_DEPTH_TEST);
+    
     [self.openGLContext makeCurrentContext];
 
     if (aRenderer == leftEyeRenderer)
@@ -480,6 +482,8 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
 
 - (void)renderer:(id <SCNSceneRenderer>)aRenderer didRenderScene:(SCNScene *)scene atTime:(NSTimeInterval)time;
 {
+    glEnable(GL_DEPTH_TEST);
+
     [self.openGLContext makeCurrentContext];
 
     if (aRenderer == leftEyeRenderer)
