@@ -43,6 +43,7 @@
     ceiling.materials = @[holodeckWalls];
     ceiling.reflectivity = 0.1f;
     SCNNode *ceilingNode = [SCNNode nodeWithGeometry:ceiling];
+    ceilingNode.transform = CATransform3DMakeRotation(-M_PI, 0.0, 0.0, 1.0);
     ceilingNode.position = SCNVector3Make(0.0, roomRadius, 0.0);
     [scene.rootNode addChildNode:ceilingNode];
 
@@ -50,7 +51,7 @@
     leftWall.materials = @[holodeckWalls];
     leftWall.reflectivity = 0.1f;
     SCNNode *leftWallNode = [SCNNode nodeWithGeometry:leftWall];
-    leftWallNode.transform = CATransform3DMakeRotation(M_PI/2.0, 0.0, 0.0, 1.0);
+    leftWallNode.transform = CATransform3DMakeRotation(-M_PI/2.0, 0.0, 0.0, 1.0);
     leftWallNode.position = SCNVector3Make(-roomRadius, 0.0, 0.0);
     [scene.rootNode addChildNode:leftWallNode];
     
@@ -74,14 +75,14 @@
     rearWall.materials = @[holodeckWalls];
     rearWall.reflectivity = 0.1f;
     SCNNode *rearWallNode = [SCNNode nodeWithGeometry:rearWall];
-    rearWallNode.transform = CATransform3DMakeRotation(M_PI/2.0, 1.0, 0.0, 0.0);
+    rearWallNode.transform = CATransform3DMakeRotation(-M_PI/2.0, 1.0, 0.0, 0.0);
     rearWallNode.position = SCNVector3Make(0.0, 0.0, roomRadius);
     [scene.rootNode addChildNode:rearWallNode];
 
     // Throw a few objects into the room
-    SCNBox *cube = [SCNBox boxWithWidth:60 height:60 length:60 chamferRadius:0.0];
+    SCNBox *cube = [SCNBox boxWithWidth:200 height:200 length:200 chamferRadius:0.0];
     SCNNode *cubeNode = [SCNNode nodeWithGeometry:cube];
-    cubeNode.position = SCNVector3Make(0, 0, -200);
+    cubeNode.position = SCNVector3Make(300, 0, -300);
     [objectsNode addChildNode:cubeNode];
     
     SCNTorus *torus = [SCNTorus torusWithRingRadius:60 pipeRadius:20];
@@ -89,6 +90,21 @@
     torusNode.position = SCNVector3Make(-50, 0, -100);
     torus.materials = @[torusReflectiveMaterial];
     [objectsNode addChildNode:torusNode];
+    
+    SCNCylinder *cylinder = [SCNCylinder cylinderWithRadius:40.0 height:100.0];
+    SCNNode *cylinderNode = [SCNNode nodeWithGeometry:cylinder];
+    cylinderNode.position = SCNVector3Make(-400, -400, -400);
+    [objectsNode addChildNode:cylinderNode];
+
+    SCNSphere *sphere = [SCNSphere sphereWithRadius:40.0];
+    SCNNode *sphereNode = [SCNNode nodeWithGeometry:sphere];
+    sphereNode.position = SCNVector3Make(200, -200, 0);
+    [objectsNode addChildNode:sphereNode];
+
+    SCNPyramid *pyramid = [SCNPyramid pyramidWithWidth:60 height:60 length:60];
+    SCNNode *pyramidNode = [SCNNode nodeWithGeometry:pyramid];
+    pyramidNode.position = SCNVector3Make(200, 200, -200);
+    [objectsNode addChildNode:pyramidNode];
     
     // Create ambient light
     SCNLight *ambientLight = [SCNLight light];
@@ -106,7 +122,7 @@
 	diffuseLightNode.position = SCNVector3Make(0, 300, 0);
 	[scene.rootNode addChildNode:diffuseLightNode];
     
-    // Animate the torus
+    // Animate the objects
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.values = [NSArray arrayWithObjects:
                         [NSValue valueWithCATransform3D:CATransform3DRotate(torusNode.transform, 0 * M_PI / 2, 1.f, 0.5f, 0.f)],

@@ -22,6 +22,7 @@
 		BCD6161117BB301B005535A1 /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD6161017BB301A005535A1 /* libovr.a */; };
 		BCD6162317BB320D005535A1 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD6162217BB320D005535A1 /* GLKit.framework */; };
 		BCD6162517BB3212005535A1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD6162417BB3212005535A1 /* IOKit.framework */; };
+		BCD6162617BB38FB005535A1 /* OculusRiftDevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = BCD6160D17BB2E5C005535A1 /* OculusRiftDevice.mm */; settings = {COMPILER_FLAGS = "-fno-rtti"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -235,6 +236,7 @@
 				BCAA76BE17B5DF3200E25C2A /* SLSAppDelegate.m in Sources */,
 				BC6C083817B6D2A500A20AD6 /* OculusRiftSceneKitView.m in Sources */,
 				BC6C083B17B6E58E00A20AD6 /* GLProgram.m in Sources */,
+				BCD6162617BB38FB005535A1 /* OculusRiftDevice.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

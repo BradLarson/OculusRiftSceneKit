@@ -3,6 +3,7 @@
 
 @interface OculusRiftDevice : NSObject
 
-- (SCNVector4)currentHeadRotation;
+- (SCNVector3)currentHeadRotationAngles;
+- (CATransform3D)currentHeadTransform;
 
 @end

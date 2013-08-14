@@ -1,4 +1,5 @@
 #import "OculusRiftSceneKitView.h"
+#import "OculusRiftDevice.h"
 
 #define STRINGIZE(x) #x
 #define STRINGIZE2(x) STRINGIZE(x)
@@ -87,6 +88,9 @@ NSString *const kOCVRLensCorrectionFragmentShaderString = SHADER_STRING
     BOOL leftSceneReady, rightSceneReady;
     
     SCNNode *leftEyeCameraNode, *rightEyeCameraNode;
+    SCNNode *headRotationNode, *headPositionNode;
+    
+    OculusRiftDevice *oculusRiftDevice;
 }
 
 - (void)commonInit;
@@ -167,6 +171,8 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     
     [self configureEyeRenderingFramebuffers];
     [self configureDisplayProgram];
+    
+    oculusRiftDevice = [[OculusRiftDevice alloc] init];
     
     leftEyeRenderer = [SCNRenderer rendererWithContext:[context CGLContextObj] options:nil];
     leftEyeRenderer.delegate = self;
@@ -393,6 +399,9 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
 {
     // TODO: Run this on a background queue to avoid blocking the main thread
     dispatch_sync(dispatch_get_main_queue(), ^{
+        
+        headRotationNode.transform = [oculusRiftDevice currentHeadTransform];
+        
         [leftEyeRenderer render];
         [rightEyeRenderer render];
         [self renderStereoscopicScene];
@@ -473,8 +482,10 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
 
     
     CGFloat distortionCorrection = 1.0 + 0.22 + 0.24;
-    CGFloat verticalFOV = 2.0 * atan(distortionCorrection * 0.09356 / (2.0 * 0.041)) * 180.0 / M_PI;// VScreenSize = 0.09356, EyeToScreenDistance = 0.041
-    CGFloat horizontalFOV = 2.0 * atan(distortionCorrection * 0.14976 / (2.0 * 0.041)) * 180.0 / M_PI;// HScreenSize = 0.14976, EyeToScreenDistance = 0.041
+//    CGFloat verticalFOV = 2.0 * atan(distortionCorrection * 0.09356 / (2.0 * 0.041)) * 180.0 / M_PI;// VScreenSize = 0.09356, EyeToScreenDistance = 0.041
+//    CGFloat horizontalFOV = 2.0 * atan(distortionCorrection * 0.14976 / (2.0 * 0.041)) * 180.0 / M_PI;// HScreenSize = 0.14976, EyeToScreenDistance = 0.041
+    CGFloat verticalFOV = 97.5;
+    CGFloat horizontalFOV = 80.8;
     
     NSLog(@"Vertical FOV: %f", verticalFOV);
     NSLog(@"Horizontal FOV: %f", horizontalFOV);
@@ -482,7 +493,13 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     _scene = newValue;
     leftEyeRenderer.scene = _scene;
     rightEyeRenderer.scene = _scene;
-    
+
+    headRotationNode = [SCNNode node];
+    headPositionNode = [SCNNode node];
+    headPositionNode.position = _headLocation;
+    [_scene.rootNode addChildNode:headPositionNode];
+    [headPositionNode addChildNode:headRotationNode];
+
     // TODO: Deal with re-adding camera nodes for setting the same scene
     // 64 mm interpupillary distance
     SCNCamera *leftEyeCamera = [SCNCamera camera];
@@ -492,8 +509,8 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     leftEyeCamera.zFar = 2000;
 	leftEyeCameraNode = [SCNNode node];
 	leftEyeCameraNode.camera = leftEyeCamera;
-    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
-    [_scene.rootNode addChildNode:leftEyeCameraNode];
+    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0), 0.0, 0.0);
+    [headRotationNode addChildNode:leftEyeCameraNode];
     
     SCNCamera *rightEyeCamera = [SCNCamera camera];
     rightEyeCamera.xFov = 120;
@@ -502,8 +519,8 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     rightEyeCamera.zFar = 2000;
 	rightEyeCameraNode = [SCNNode node];
 	rightEyeCameraNode.camera = rightEyeCamera;
-    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
-    [_scene.rootNode addChildNode:rightEyeCameraNode];
+    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0), 0.0, 0.0);
+    [headRotationNode addChildNode:rightEyeCameraNode];
     
     // Tell each view which camera in the scene to use
     leftEyeRenderer.pointOfView = leftEyeCameraNode;
@@ -520,15 +537,14 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     NSLog(@"Ipd: %f", newValue);
     
     _interpupillaryDistance = newValue;
-    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
-    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
+    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0), 0.0, 0.0);
+    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0), 0.0, 0.0);
 }
 
 - (void)setHeadLocation:(SCNVector3)newValue;
 {
     _headLocation = newValue;
-    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
-    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
+    headPositionNode.position = newValue;
 }
 
 @end
