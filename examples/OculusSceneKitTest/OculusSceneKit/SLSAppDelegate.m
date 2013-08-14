@@ -1,11 +1,3 @@
-//
-//  SLSAppDelegate.m
-//  OculusSceneKit
-//
-//  Created by Brad Larson on 8/9/2013.
-//  Copyright (c) 2013 Sunset Lake Software LLC. All rights reserved.
-//
-
 #import "SLSAppDelegate.h"
 
 @implementation SLSAppDelegate
@@ -27,7 +19,6 @@
     holodeckWalls.diffuse.magnificationFilter = SCNLinearFiltering;
     holodeckWalls.diffuse.mipFilter = SCNLinearFiltering;
     NSImage *diffuseImage = [NSImage imageNamed:@"Holodeck"];
-    NSLog(@"Image: %@", diffuseImage);
     holodeckWalls.diffuse.contents  = diffuseImage;
     holodeckWalls.diffuse.wrapS = SCNWrapModeRepeat;
     holodeckWalls.diffuse.wrapT = SCNWrapModeRepeat;
@@ -162,16 +153,16 @@
 
 - (IBAction)increaseDistance:(id)sender;
 {
-    SCNVector3 currentLocation = self.oculusView.cameraLocation;
+    SCNVector3 currentLocation = self.oculusView.headLocation;
     currentLocation.z = currentLocation.z - 50.0;
-    self.oculusView.cameraLocation = currentLocation;
+    self.oculusView.headLocation = currentLocation;
 }
 
 - (IBAction)decreaseDistance:(id)sender;
 {
-    SCNVector3 currentLocation = self.oculusView.cameraLocation;
+    SCNVector3 currentLocation = self.oculusView.headLocation;
     currentLocation.z = currentLocation.z + 50.0;
-    self.oculusView.cameraLocation = currentLocation;
+    self.oculusView.headLocation = currentLocation;
 }
 
 @end

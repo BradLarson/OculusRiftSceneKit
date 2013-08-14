@@ -8,7 +8,7 @@
 
 @property(readwrite, retain, nonatomic) SCNScene *scene;
 @property(readwrite, nonatomic) CGFloat interpupillaryDistance;
-@property(readwrite, nonatomic) SCNVector3 cameraLocation;
+@property(readwrite, nonatomic) SCNVector3 headLocation;
 
 - (CVReturn)renderTime:(const CVTimeStamp *)timeStamp;
 

@@ -110,7 +110,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
 
 @synthesize scene = _scene;
 @synthesize interpupillaryDistance = _interpupillaryDistance;
-@synthesize cameraLocation = _cameraLocation;
+@synthesize headLocation = _headLocation;
 
 #pragma mark -
 #pragma mark Initialization and teardown
@@ -164,7 +164,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     
     GLint swap = 0;
     [[self openGLContext] setValues:&swap forParameter:NSOpenGLCPSwapInterval];
-
+    
     [self configureEyeRenderingFramebuffers];
     [self configureDisplayProgram];
     
@@ -174,7 +174,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     rightEyeRenderer.delegate = self;
     
     _interpupillaryDistance = 64.0;
-    _cameraLocation = SCNVector3Make(0.0, 0.0, 200.0);
+    _headLocation = SCNVector3Make(0.0, 0.0, 200.0);
     
     CGDirectDisplayID   displayID = CGMainDisplayID();
     CVReturn            error = kCVReturnSuccess;
@@ -492,7 +492,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     leftEyeCamera.zFar = 2000;
 	leftEyeCameraNode = [SCNNode node];
 	leftEyeCameraNode.camera = leftEyeCamera;
-    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0) + _cameraLocation.x, _cameraLocation.y, _cameraLocation.z);
+    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
     [_scene.rootNode addChildNode:leftEyeCameraNode];
     
     SCNCamera *rightEyeCamera = [SCNCamera camera];
@@ -502,7 +502,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     rightEyeCamera.zFar = 2000;
 	rightEyeCameraNode = [SCNNode node];
 	rightEyeCameraNode.camera = rightEyeCamera;
-    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0) + _cameraLocation.x, _cameraLocation.y, _cameraLocation.z);
+    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
     [_scene.rootNode addChildNode:rightEyeCameraNode];
     
     // Tell each view which camera in the scene to use
@@ -520,15 +520,15 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     NSLog(@"Ipd: %f", newValue);
     
     _interpupillaryDistance = newValue;
-    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0) + _cameraLocation.x, _cameraLocation.y, _cameraLocation.z);
-    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0) + _cameraLocation.x, _cameraLocation.y, _cameraLocation.z);
+    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
+    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
 }
 
-- (void)setCameraLocation:(SCNVector3)newValue;
+- (void)setHeadLocation:(SCNVector3)newValue;
 {
-    _cameraLocation = newValue;
-    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0) + _cameraLocation.x, _cameraLocation.y, _cameraLocation.z);
-    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0) + _cameraLocation.x, _cameraLocation.y, _cameraLocation.z);
+    _headLocation = newValue;
+    leftEyeCameraNode.transform = CATransform3DMakeTranslation(-(_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
+    rightEyeCameraNode.transform = CATransform3DMakeTranslation((_interpupillaryDistance / 2.0) + _headLocation.x, _headLocation.y, _headLocation.z);
 }
 
 @end

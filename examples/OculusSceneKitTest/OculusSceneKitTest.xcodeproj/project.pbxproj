@@ -19,6 +19,9 @@
 		BCAA76C817B5DF5700E25C2A /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAA76C717B5DF5700E25C2A /* SceneKit.framework */; };
 		BCAA76CA17B5DF6500E25C2A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAA76C917B5DF6500E25C2A /* QuartzCore.framework */; };
 		BCD6160B17BB2875005535A1 /* Holodeck.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD6160A17BB274E005535A1 /* Holodeck.png */; };
+		BCD6161117BB301B005535A1 /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD6161017BB301A005535A1 /* libovr.a */; };
+		BCD6162317BB320D005535A1 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD6162217BB320D005535A1 /* GLKit.framework */; };
+		BCD6162517BB3212005535A1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD6162417BB3212005535A1 /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,13 @@
 		BCAA76C717B5DF5700E25C2A /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		BCAA76C917B5DF6500E25C2A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCD6160A17BB274E005535A1 /* Holodeck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Holodeck.png; sourceTree = "<group>"; };
+		BCD6160C17BB2E5C005535A1 /* OculusRiftDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OculusRiftDevice.h; path = ../../OculusRiftDevice.h; sourceTree = "<group>"; };
+		BCD6160D17BB2E5C005535A1 /* OculusRiftDevice.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = OculusRiftDevice.mm; path = ../../OculusRiftDevice.mm; sourceTree = "<group>"; };
+		BCD6161017BB301A005535A1 /* libovr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libovr.a; path = ../../LibOVR/libovr.a; sourceTree = "<group>"; };
+		BCD6161217BB3044005535A1 /* OVR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OVR.h; path = ../../LibOVR/Include/OVR.h; sourceTree = "<group>"; };
+		BCD6161317BB3044005535A1 /* OVRVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OVRVersion.h; path = ../../LibOVR/Include/OVRVersion.h; sourceTree = "<group>"; };
+		BCD6162217BB320D005535A1 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		BCD6162417BB3212005535A1 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD6162517BB3212005535A1 /* IOKit.framework in Frameworks */,
+				BCD6162317BB320D005535A1 /* GLKit.framework in Frameworks */,
+				BCD6161117BB301B005535A1 /* libovr.a in Frameworks */,
 				BC6C083D17B6E83F00A20AD6 /* OpenGL.framework in Frameworks */,
 				BCAA76CA17B5DF6500E25C2A /* QuartzCore.framework in Frameworks */,
 				BCAA76C817B5DF5700E25C2A /* SceneKit.framework in Frameworks */,
@@ -80,6 +93,9 @@
 		BCAA76A917B5DF3200E25C2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCD6162417BB3212005535A1 /* IOKit.framework */,
+				BCD6162217BB320D005535A1 /* GLKit.framework */,
+				BCD6161017BB301A005535A1 /* libovr.a */,
 				BC6C083C17B6E83F00A20AD6 /* OpenGL.framework */,
 				BCAA76C917B5DF6500E25C2A /* QuartzCore.framework */,
 				BCAA76C717B5DF5700E25C2A /* SceneKit.framework */,
@@ -106,10 +122,8 @@
 				BCAA76BD17B5DF3200E25C2A /* SLSAppDelegate.m */,
 				BCAA76BF17B5DF3200E25C2A /* MainMenu.xib */,
 				BCAA76B117B5DF3200E25C2A /* Supporting Files */,
-				BC6C083617B6D1AD00A20AD6 /* OculusRiftSceneKitView.h */,
-				BC6C083717B6D1AD00A20AD6 /* OculusRiftSceneKitView.m */,
-				BC6C083917B6E57E00A20AD6 /* GLProgram.h */,
-				BC6C083A17B6E57E00A20AD6 /* GLProgram.m */,
+				BCD6160E17BB2FEE005535A1 /* Head tracking */,
+				BCD6160F17BB2FFF005535A1 /* Rendering */,
 			);
 			name = OculusSceneKitTest;
 			path = OculusSceneKit;
@@ -126,6 +140,29 @@
 				BCAA76B917B5DF3200E25C2A /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BCD6160E17BB2FEE005535A1 /* Head tracking */ = {
+			isa = PBXGroup;
+			children = (
+				BCD6161217BB3044005535A1 /* OVR.h */,
+				BCD6161317BB3044005535A1 /* OVRVersion.h */,
+				BCD6160C17BB2E5C005535A1 /* OculusRiftDevice.h */,
+				BCD6160D17BB2E5C005535A1 /* OculusRiftDevice.mm */,
+			);
+			name = "Head tracking";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		BCD6160F17BB2FFF005535A1 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				BC6C083617B6D1AD00A20AD6 /* OculusRiftSceneKitView.h */,
+				BC6C083717B6D1AD00A20AD6 /* OculusRiftSceneKitView.m */,
+				BC6C083917B6E57E00A20AD6 /* GLProgram.h */,
+				BC6C083A17B6E57E00A20AD6 /* GLProgram.m */,
+			);
+			name = Rendering;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +334,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OculusSceneKit/OculusSceneKitTest-Prefix.pch";
 				INFOPLIST_FILE = "OculusSceneKit/OculusSceneKitTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../LibOVR",
+				);
 				PRODUCT_NAME = OculusSceneKitTest;
 				WRAPPER_EXTENSION = app;
 			};
@@ -309,6 +350,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OculusSceneKit/OculusSceneKitTest-Prefix.pch";
 				INFOPLIST_FILE = "OculusSceneKit/OculusSceneKitTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../LibOVR",
+				);
 				PRODUCT_NAME = OculusSceneKitTest;
 				WRAPPER_EXTENSION = app;
 			};

@@ -1,11 +1,3 @@
-//
-//  SLSAppDelegate.h
-//  OculusSceneKit
-//
-//  Created by Brad Larson on 8/9/2013.
-//  Copyright (c) 2013 Sunset Lake Software LLC. All rights reserved.
-//
-
 #import <Cocoa/Cocoa.h>
 #import "OculusRiftSceneKitView.h"
 
