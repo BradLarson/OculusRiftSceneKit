@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC6C083517B6C14300A20AD6 /* SLSOculusView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C083317B6BED300A20AD6 /* SLSOculusView.m */; };
 		BC6C083817B6D2A500A20AD6 /* OculusRiftSceneKitView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C083717B6D1AD00A20AD6 /* OculusRiftSceneKitView.m */; };
 		BC6C083B17B6E58E00A20AD6 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C083A17B6E57E00A20AD6 /* GLProgram.m */; };
 		BC6C083D17B6E83F00A20AD6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6C083C17B6E83F00A20AD6 /* OpenGL.framework */; };
@@ -19,11 +18,10 @@
 		BCAA76C117B5DF3200E25C2A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCAA76BF17B5DF3200E25C2A /* MainMenu.xib */; };
 		BCAA76C817B5DF5700E25C2A /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAA76C717B5DF5700E25C2A /* SceneKit.framework */; };
 		BCAA76CA17B5DF6500E25C2A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAA76C917B5DF6500E25C2A /* QuartzCore.framework */; };
+		BCD6160B17BB2875005535A1 /* Holodeck.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD6160A17BB274E005535A1 /* Holodeck.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BC6C083217B6BED300A20AD6 /* SLSOculusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLSOculusView.h; sourceTree = "<group>"; };
-		BC6C083317B6BED300A20AD6 /* SLSOculusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLSOculusView.m; sourceTree = "<group>"; };
 		BC6C083617B6D1AD00A20AD6 /* OculusRiftSceneKitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OculusRiftSceneKitView.h; path = ../../../OculusRiftSceneKitView.h; sourceTree = "<group>"; };
 		BC6C083717B6D1AD00A20AD6 /* OculusRiftSceneKitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OculusRiftSceneKitView.m; path = ../../../OculusRiftSceneKitView.m; sourceTree = "<group>"; };
 		BC6C083917B6E57E00A20AD6 /* GLProgram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLProgram.h; path = ../../../GLProgram.h; sourceTree = "<group>"; };
@@ -44,6 +42,7 @@
 		BCAA76C017B5DF3200E25C2A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		BCAA76C717B5DF5700E25C2A /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		BCAA76C917B5DF6500E25C2A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BCD6160A17BB274E005535A1 /* Holodeck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Holodeck.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +106,6 @@
 				BCAA76BD17B5DF3200E25C2A /* SLSAppDelegate.m */,
 				BCAA76BF17B5DF3200E25C2A /* MainMenu.xib */,
 				BCAA76B117B5DF3200E25C2A /* Supporting Files */,
-				BC6C083217B6BED300A20AD6 /* SLSOculusView.h */,
-				BC6C083317B6BED300A20AD6 /* SLSOculusView.m */,
 				BC6C083617B6D1AD00A20AD6 /* OculusRiftSceneKitView.h */,
 				BC6C083717B6D1AD00A20AD6 /* OculusRiftSceneKitView.m */,
 				BC6C083917B6E57E00A20AD6 /* GLProgram.h */,
@@ -121,6 +118,7 @@
 		BCAA76B117B5DF3200E25C2A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BCD6160A17BB274E005535A1 /* Holodeck.png */,
 				BCAA76B217B5DF3200E25C2A /* OculusSceneKitTest-Info.plist */,
 				BCAA76B317B5DF3200E25C2A /* InfoPlist.strings */,
 				BCAA76B617B5DF3200E25C2A /* main.m */,
@@ -185,6 +183,7 @@
 				BCAA76B517B5DF3200E25C2A /* InfoPlist.strings in Resources */,
 				BCAA76BB17B5DF3200E25C2A /* Credits.rtf in Resources */,
 				BCAA76C117B5DF3200E25C2A /* MainMenu.xib in Resources */,
+				BCD6160B17BB2875005535A1 /* Holodeck.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +196,6 @@
 			files = (
 				BCAA76B717B5DF3200E25C2A /* main.m in Sources */,
 				BCAA76BE17B5DF3200E25C2A /* SLSAppDelegate.m in Sources */,
-				BC6C083517B6C14300A20AD6 /* SLSOculusView.m in Sources */,
 				BC6C083817B6D2A500A20AD6 /* OculusRiftSceneKitView.m in Sources */,
 				BC6C083B17B6E58E00A20AD6 /* GLProgram.m in Sources */,
 			);

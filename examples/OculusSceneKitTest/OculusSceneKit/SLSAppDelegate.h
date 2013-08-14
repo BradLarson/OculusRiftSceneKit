@@ -7,14 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SLSOculusView.h"
 #import "OculusRiftSceneKitView.h"
 
 @interface SLSAppDelegate : NSObject <NSApplicationDelegate>
 
 @property(assign) IBOutlet NSWindow *window;
 @property(assign) IBOutlet OculusRiftSceneKitView *oculusView;
-@property(assign) IBOutlet SLSOculusView *oculusView2;
 
 - (IBAction)increaseIPD:(id)sender;
 - (IBAction)decreaseIPD:(id)sender;

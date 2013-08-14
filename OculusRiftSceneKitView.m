@@ -4,6 +4,9 @@
 #define STRINGIZE2(x) STRINGIZE(x)
 #define SHADER_STRING(text) @ STRINGIZE2(text)
 
+#define EYE_RENDER_RESOLUTION_X 800
+#define EYE_RENDER_RESOLUTION_Y 1000
+
 NSString *const kOCVRVertexShaderString = SHADER_STRING
 (
  attribute vec4 position;
@@ -32,25 +35,7 @@ NSString *const kOCVRPassthroughFragmentShaderString = SHADER_STRING
 );
 
 
-// Lens correction shaders drawn from the Oculus VR SDK
-
-NSString *const kOCVRLensCorrectionVertexShaderString = SHADER_STRING
-(
- uniform mat4 View;
- uniform mat4 Texm;
- attribute vec4 position;
- attribute vec2 inputTextureCoordinate;
- varying vec2 textureCoordinate;
- void main()
- {
-//    gl_Position = View * position;
-     gl_Position = position;
-//    textureCoordinate = vec2(Texm * vec4(inputTextureCoordinate,0.0,1.0));
-//    textureCoordinate.y = 1.0-textureCoordinate.y;
-     textureCoordinate = inputTextureCoordinate.xy;
- }
-);
-
+// Lens correction shader drawn from the Oculus VR SDK
 NSString *const kOCVRLensCorrectionFragmentShaderString = SHADER_STRING
 (
  varying vec2 textureCoordinate;
@@ -68,7 +53,8 @@ NSString *const kOCVRLensCorrectionFragmentShaderString = SHADER_STRING
      vec2 theta = (in01 - LensCenter) * ScaleIn; // Scales to [-1, 1]
      float rSq = theta.x * theta.x + theta.y * theta.y;
      vec2  theta1 = theta * (HmdWarpParam.x + HmdWarpParam.y * rSq + HmdWarpParam.z * rSq * rSq + HmdWarpParam.w * rSq * rSq * rSq);
-     return LensCenter + Scale * theta1;
+//     return LensCenter + Scale * theta1;
+     return ScreenCenter + Scale * theta1;
  }
  void main()
  {
@@ -90,7 +76,6 @@ NSString *const kOCVRLensCorrectionFragmentShaderString = SHADER_STRING
     GLint displayInputTextureUniform;
     
     GLint lensCenterUniform, screenCenterUniform, scaleUniform, scaleInUniform, hmdWarpParamUniform;
-    GLint viewUniform, texmUniform;
     
     GLuint leftEyeTexture, rightEyeTexture;
     GLuint leftEyeDepthTexture, rightEyeDepthTexture;
@@ -233,10 +218,10 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     glGenRenderbuffers(1, &leftEyeDepthBuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, leftEyeDepthBuffer);
 
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, 640, 800);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, EYE_RENDER_RESOLUTION_X, EYE_RENDER_RESOLUTION_Y);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, leftEyeDepthBuffer);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 640, 800, 0, GL_BGRA, GL_UNSIGNED_BYTE, 0);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, EYE_RENDER_RESOLUTION_X, EYE_RENDER_RESOLUTION_Y, 0, GL_BGRA, GL_UNSIGNED_BYTE, 0);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, leftEyeTexture, 0);
     GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
     NSAssert(status == GL_FRAMEBUFFER_COMPLETE, @"Incomplete left eye FBO: %d", status);
@@ -256,10 +241,10 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     glGenRenderbuffers(1, &rightEyeDepthBuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, rightEyeDepthBuffer);
 
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, 640, 800);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, EYE_RENDER_RESOLUTION_X, EYE_RENDER_RESOLUTION_Y);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rightEyeDepthBuffer);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 640, 800, 0, GL_BGRA, GL_UNSIGNED_BYTE, 0);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, EYE_RENDER_RESOLUTION_X, EYE_RENDER_RESOLUTION_Y, 0, GL_BGRA, GL_UNSIGNED_BYTE, 0);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, rightEyeTexture, 0);
     status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
     NSAssert(status == GL_FRAMEBUFFER_COMPLETE, @"Incomplete right eye FBO: %d", status);
@@ -298,8 +283,6 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     scaleInUniform = [displayProgram uniformIndex:@"ScaleIn"];
     hmdWarpParamUniform = [displayProgram uniformIndex:@"HmdWarpParam"];
     lensCenterUniform = [displayProgram uniformIndex:@"LensCenter"];
-    viewUniform = [displayProgram uniformIndex:@"View"];
-    texmUniform = [displayProgram uniformIndex:@"Texm"];
 
     [displayProgram use];
     
@@ -362,22 +345,6 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     glUniform2f(lensCenterUniform, x + (w + distortion * 0.5f)*0.5f, y + h*0.5f);
     glUniform2f(screenCenterUniform, x + w*0.5f, y + h*0.5f);
 //    glUniform2f(screenCenterUniform, 0.5f, 0.5f);
-
-    GLfloat texmMatrix[16] = {
-        w, 0.0, 0.0, x,
-        0.0, h, 0.0, y,
-        0.0, 0.0, 0.0, 0.0,
-        0.0, 0.0, 0.0, 1.0
-    };
-    glUniformMatrix4fv(texmUniform, 1, GL_FALSE, texmMatrix);
-
-    GLfloat viewMatrix[16] = {
-        1.0, 0.0, 0.0, -1.0,
-        0.0, 1.0, 0.0, -1.0,
-        0.0, 0.0, 0.0, 0.0,
-        0.0, 0.0, 0.0, 1.0
-    };
-    glUniformMatrix4fv(viewUniform, 1, GL_FALSE, viewMatrix);
     
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, leftEyeTexture);
@@ -395,14 +362,6 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     distortion = -0.151976 * 2.0;
     glUniform2f(lensCenterUniform, x + (w + distortion * 0.5f)*0.5f, y + h*0.5f);
     glUniform2f(screenCenterUniform, 0.5f, 0.5f);
-
-    GLfloat texmMatrix2[16] = {
-        w, 0.0, 0.0, x,
-        0.0, h, 0.0, y,
-        0.0, 0.0, 0.0, 0.0,
-        0.0, 0.0, 0.0, 1.0
-    };
-    glUniformMatrix4fv(texmUniform, 1, GL_FALSE, texmMatrix2);
 
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, rightEyeTexture);
@@ -456,14 +415,14 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
         glBindFramebuffer(GL_FRAMEBUFFER, leftEyeFramebuffer);
         glBindRenderbuffer(GL_RENDERBUFFER, leftEyeDepthBuffer);
 
-        glViewport(0, 0, 640, 800);
+        glViewport(0, 0, EYE_RENDER_RESOLUTION_X, EYE_RENDER_RESOLUTION_Y);
     }
     else if (aRenderer == rightEyeRenderer)
     {
         glBindFramebuffer(GL_FRAMEBUFFER, rightEyeFramebuffer);
         glBindRenderbuffer(GL_RENDERBUFFER, rightEyeDepthBuffer);
         
-        glViewport(0, 0, 640, 800);
+        glViewport(0, 0, EYE_RENDER_RESOLUTION_X, EYE_RENDER_RESOLUTION_Y);
     }
     
     glClearColor(0.0, 0.0, 1.0, 1.0);
@@ -510,6 +469,16 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     leftSceneReady = NO;
     rightSceneReady = NO;
     
+    glUniform4f(hmdWarpParamUniform, 1.0, 0.22, 0.24, 0.0);
+
+    
+    CGFloat distortionCorrection = 1.0 + 0.22 + 0.24;
+    CGFloat verticalFOV = 2.0 * atan(distortionCorrection * 0.09356 / (2.0 * 0.041)) * 180.0 / M_PI;// VScreenSize = 0.09356, EyeToScreenDistance = 0.041
+    CGFloat horizontalFOV = 2.0 * atan(distortionCorrection * 0.14976 / (2.0 * 0.041)) * 180.0 / M_PI;// HScreenSize = 0.14976, EyeToScreenDistance = 0.041
+    
+    NSLog(@"Vertical FOV: %f", verticalFOV);
+    NSLog(@"Horizontal FOV: %f", horizontalFOV);
+    
     _scene = newValue;
     leftEyeRenderer.scene = _scene;
     rightEyeRenderer.scene = _scene;
@@ -517,9 +486,9 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     // TODO: Deal with re-adding camera nodes for setting the same scene
     // 64 mm interpupillary distance
     SCNCamera *leftEyeCamera = [SCNCamera camera];
-    leftEyeCamera.xFov = 90;
-    leftEyeCamera.yFov = 90;
-    leftEyeCamera.zNear = 0.1;
+    leftEyeCamera.xFov = 120;
+    leftEyeCamera.yFov = verticalFOV;
+    leftEyeCamera.zNear = horizontalFOV;
     leftEyeCamera.zFar = 2000;
 	leftEyeCameraNode = [SCNNode node];
 	leftEyeCameraNode.camera = leftEyeCamera;
@@ -527,9 +496,9 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     [_scene.rootNode addChildNode:leftEyeCameraNode];
     
     SCNCamera *rightEyeCamera = [SCNCamera camera];
-    rightEyeCamera.xFov = 90;
-    rightEyeCamera.yFov = 90;
-    rightEyeCamera.zNear = 0.1;
+    rightEyeCamera.xFov = 120;
+    rightEyeCamera.yFov = verticalFOV;
+    rightEyeCamera.zNear = horizontalFOV;
     rightEyeCamera.zFar = 2000;
 	rightEyeCameraNode = [SCNNode node];
 	rightEyeCameraNode.camera = rightEyeCamera;
