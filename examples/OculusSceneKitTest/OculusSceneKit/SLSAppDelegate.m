@@ -22,8 +22,7 @@
     holodeckWalls.diffuse.contents  = diffuseImage;
     holodeckWalls.diffuse.wrapS = SCNWrapModeRepeat;
     holodeckWalls.diffuse.wrapT = SCNWrapModeRepeat;
-    holodeckWalls.diffuse.contentsTransform = CATransform3DMakeScale(1.0/20.0, 1.0/20.0, 1.0/20.0);
-    holodeckWalls.specular.contents = [NSColor colorWithWhite:0.5 alpha:0.5];
+    holodeckWalls.specular.contents = [NSColor colorWithDeviceRed:0.5 green:0.5 blue:0.5 alpha:0.5];
     holodeckWalls.shininess = 0.25;
 
     SCNMaterial *torusReflectiveMaterial = [SCNMaterial material];
@@ -32,51 +31,51 @@
     torusReflectiveMaterial.shininess = 100.0;
     
     // Configure the room
-    SCNFloor *floor = [SCNFloor floor];
+    SCNPlane *floor = [SCNPlane planeWithWidth:roomRadius * 2.0 height:roomRadius * 2.0];
     floor.materials = @[holodeckWalls];
-    floor.reflectivity = 0.1f;
     SCNNode *floorNode = [SCNNode nodeWithGeometry:floor];
-    floorNode.position = SCNVector3Make(0.0, -roomRadius, 0.0);
+    CATransform3D wallTransform = CATransform3DMakeTranslation(0.0, -roomRadius, 0.0);
+    wallTransform = CATransform3DRotate(wallTransform, -M_PI /2.0, 1.0, 0.0, 0.0);
+    floorNode.transform = wallTransform;
     [scene.rootNode addChildNode:floorNode];
 
-    SCNFloor *ceiling = [SCNFloor floor];
+    SCNPlane *ceiling = [SCNPlane planeWithWidth:roomRadius * 2.0 height:roomRadius * 2.0];
     ceiling.materials = @[holodeckWalls];
-    ceiling.reflectivity = 0.1f;
     SCNNode *ceilingNode = [SCNNode nodeWithGeometry:ceiling];
-    ceilingNode.transform = CATransform3DMakeRotation(-M_PI, 0.0, 0.0, 1.0);
-    ceilingNode.position = SCNVector3Make(0.0, roomRadius, 0.0);
+    wallTransform = CATransform3DMakeTranslation(0.0, roomRadius, 0.0);
+    wallTransform = CATransform3DRotate(wallTransform, M_PI /2.0, 1.0, 0.0, 0.0);
+    ceilingNode.transform = wallTransform;
     [scene.rootNode addChildNode:ceilingNode];
 
-    SCNFloor *leftWall = [SCNFloor floor];
+    SCNPlane *leftWall = [SCNPlane planeWithWidth:roomRadius * 2.0 height:roomRadius * 2.0];
     leftWall.materials = @[holodeckWalls];
-    leftWall.reflectivity = 0.1f;
     SCNNode *leftWallNode = [SCNNode nodeWithGeometry:leftWall];
-    leftWallNode.transform = CATransform3DMakeRotation(-M_PI/2.0, 0.0, 0.0, 1.0);
-    leftWallNode.position = SCNVector3Make(-roomRadius, 0.0, 0.0);
+    wallTransform = CATransform3DMakeTranslation(-roomRadius, 0.0, 0.0);
+    wallTransform = CATransform3DRotate(wallTransform, M_PI /2.0, 0.0, 1.0, 0.0);
+    leftWallNode.transform = wallTransform;
     [scene.rootNode addChildNode:leftWallNode];
-    
-    SCNFloor *rightWall = [SCNFloor floor];
+
+    SCNPlane *rightWall = [SCNPlane planeWithWidth:roomRadius * 2.0 height:roomRadius * 2.0];
     rightWall.materials = @[holodeckWalls];
-    rightWall.reflectivity = 0.1f;
     SCNNode *rightWallNode = [SCNNode nodeWithGeometry:rightWall];
-    rightWallNode.transform = CATransform3DMakeRotation(M_PI/2.0, 0.0, 0.0, 1.0);
-    rightWallNode.position = SCNVector3Make(roomRadius, 0.0, 0.0);
+    wallTransform = CATransform3DMakeTranslation(roomRadius, 0.0, 0.0);
+    wallTransform = CATransform3DRotate(wallTransform, -M_PI /2.0, 0.0, 1.0, 0.0);
+    rightWallNode.transform = wallTransform;
     [scene.rootNode addChildNode:rightWallNode];
 
-    SCNFloor *frontWall = [SCNFloor floor];
+    SCNPlane *frontWall = [SCNPlane planeWithWidth:roomRadius * 2.0 height:roomRadius * 2.0];
     frontWall.materials = @[holodeckWalls];
-    frontWall.reflectivity = 0.1f;
     SCNNode *frontWallNode = [SCNNode nodeWithGeometry:frontWall];
-    frontWallNode.transform = CATransform3DMakeRotation(M_PI/2.0, 1.0, 0.0, 0.0);
-    frontWallNode.position = SCNVector3Make(0.0, 0.0, -roomRadius);
+    wallTransform = CATransform3DMakeTranslation(0.0, 0.0, -roomRadius);
+    frontWallNode.transform = wallTransform;
     [scene.rootNode addChildNode:frontWallNode];
 
-    SCNFloor *rearWall = [SCNFloor floor];
+    SCNPlane *rearWall = [SCNPlane planeWithWidth:roomRadius * 2.0 height:roomRadius * 2.0];
     rearWall.materials = @[holodeckWalls];
-    rearWall.reflectivity = 0.1f;
     SCNNode *rearWallNode = [SCNNode nodeWithGeometry:rearWall];
-    rearWallNode.transform = CATransform3DMakeRotation(-M_PI/2.0, 1.0, 0.0, 0.0);
-    rearWallNode.position = SCNVector3Make(0.0, 0.0, roomRadius);
+    wallTransform = CATransform3DMakeTranslation(0.0, 0.0, roomRadius);
+    wallTransform = CATransform3DRotate(wallTransform, -M_PI, 0.0, 1.0, 0.0);
+    rearWallNode.transform = wallTransform;
     [scene.rootNode addChildNode:rearWallNode];
 
     // Throw a few objects into the room
