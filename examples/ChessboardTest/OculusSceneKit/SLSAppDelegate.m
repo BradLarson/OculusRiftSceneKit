@@ -16,19 +16,11 @@
     objectsNode.rotation = SCNVector4Make(1, 0, 0, -M_PI/2);
     
     // Chess model is from the WWDC 2013 Scene Kit presentation
-    SCNScene *chessboardScene = [SCNScene sceneNamed:@"chess"];
+    SCNScene *chessboardScene = [SCNScene sceneWithURL:[[NSBundle mainBundle] URLForResource:@"chess" withExtension:@"dae"] options:nil error:nil];
     SCNNode *chessboardNode = [chessboardScene.rootNode childNodeWithName:@"Line01" recursively:YES];
     NSLog(@"Chess node: %@", chessboardNode);
     [objectsNode addChildNode:chessboardNode];
     
-    SCNNode *bishop = [chessboardNode childNodeWithName:@"bishop" recursively:YES];
-    bishop.geometry.firstMaterial.reflective.intensity = 0.7;
-    bishop.geometry.firstMaterial.fresnelExponent = 1.5;
-    
-    SCNNode *L = [chessboardNode childNodeWithName:@"L" recursively:YES];
-    L.geometry.firstMaterial.reflective.intensity = 0.7;
-    L.geometry.firstMaterial.fresnelExponent = 1.5;
-
     // Create a diffuse light
 	SCNLight *diffuseLight = [SCNLight light];
     diffuseLight.color = [NSColor colorWithDeviceRed:0.1 green:0.1 blue:0.1 alpha:0.5];
