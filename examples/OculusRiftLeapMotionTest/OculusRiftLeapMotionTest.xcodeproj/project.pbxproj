@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC3792D217BC401500BD2E1B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3792D117BC401500BD2E1B /* Cocoa.framework */; };
+		BC3792DC17BC401500BD2E1B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3792DA17BC401500BD2E1B /* InfoPlist.strings */; };
+		BC3792DE17BC401500BD2E1B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3792DD17BC401500BD2E1B /* main.m */; };
+		BC3792E217BC401500BD2E1B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BC3792E017BC401500BD2E1B /* Credits.rtf */; };
+		BC3792E517BC401500BD2E1B /* SLSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3792E417BC401500BD2E1B /* SLSAppDelegate.m */; };
+		BC3792E817BC401500BD2E1B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC3792E617BC401500BD2E1B /* MainMenu.xib */; };
+		BC3792EF17BC402700BD2E1B /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3792EE17BC402700BD2E1B /* SceneKit.framework */; };
+		BC3792F117BC402D00BD2E1B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3792F017BC402D00BD2E1B /* OpenGL.framework */; };
+		BC3792F317BC403800BD2E1B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3792F217BC403800BD2E1B /* QuartzCore.framework */; };
+		BC3792F517BC404200BD2E1B /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3792F417BC404200BD2E1B /* libovr.a */; };
+		BC3792FC17BC406400BD2E1B /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3792F717BC406400BD2E1B /* GLProgram.m */; };
+		BC3792FD17BC406400BD2E1B /* OculusRiftDevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC3792F917BC406400BD2E1B /* OculusRiftDevice.mm */; settings = {COMPILER_FLAGS = "-fno-rtti"; }; };
+		BC3792FE17BC406400BD2E1B /* OculusRiftSceneKitView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3792FB17BC406400BD2E1B /* OculusRiftSceneKitView.m */; };
+		BC6C89B917BC41DE001E36F2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6C89B817BC41DE001E36F2 /* IOKit.framework */; };
+		BC6C89BB17BC4237001E36F2 /* Holodeck.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6C89BA17BC4219001E36F2 /* Holodeck.png */; };
+		BC6C89BD17BC427B001E36F2 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6C89BC17BC427B001E36F2 /* libLeap.dylib */; };
+		BCC248D217C02D39002E22CB /* LeapObjectiveC.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC6C89C217BC42B3001E36F2 /* LeapObjectiveC.mm */; };
+		BCC248D417C02DD4002E22CB /* libLeap.dylib in Resources */ = {isa = PBXBuildFile; fileRef = BC6C89BC17BC427B001E36F2 /* libLeap.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BC3792CE17BC401500BD2E1B /* OculusRiftLeapMotionTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OculusRiftLeapMotionTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC3792D117BC401500BD2E1B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		BC3792D417BC401500BD2E1B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		BC3792D517BC401500BD2E1B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BC3792D617BC401500BD2E1B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BC3792D917BC401500BD2E1B /* OculusRiftLeapMotionTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OculusRiftLeapMotionTest-Info.plist"; sourceTree = "<group>"; };
+		BC3792DB17BC401500BD2E1B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BC3792DD17BC401500BD2E1B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BC3792DF17BC401500BD2E1B /* OculusRiftLeapMotionTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OculusRiftLeapMotionTest-Prefix.pch"; sourceTree = "<group>"; };
+		BC3792E117BC401500BD2E1B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		BC3792E317BC401500BD2E1B /* SLSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLSAppDelegate.h; sourceTree = "<group>"; };
+		BC3792E417BC401500BD2E1B /* SLSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLSAppDelegate.m; sourceTree = "<group>"; };
+		BC3792E717BC401500BD2E1B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BC3792EE17BC402700BD2E1B /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		BC3792F017BC402D00BD2E1B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		BC3792F217BC403800BD2E1B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BC3792F417BC404200BD2E1B /* libovr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libovr.a; path = ../../LibOVR/libovr.a; sourceTree = "<group>"; };
+		BC3792F617BC406400BD2E1B /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLProgram.h; path = ../../../GLProgram.h; sourceTree = "<group>"; };
+		BC3792F717BC406400BD2E1B /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLProgram.m; path = ../../../GLProgram.m; sourceTree = "<group>"; };
+		BC3792F817BC406400BD2E1B /* OculusRiftDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OculusRiftDevice.h; path = ../../../OculusRiftDevice.h; sourceTree = "<group>"; };
+		BC3792F917BC406400BD2E1B /* OculusRiftDevice.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = OculusRiftDevice.mm; path = ../../../OculusRiftDevice.mm; sourceTree = "<group>"; };
+		BC3792FA17BC406400BD2E1B /* OculusRiftSceneKitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OculusRiftSceneKitView.h; path = ../../../OculusRiftSceneKitView.h; sourceTree = "<group>"; };
+		BC3792FB17BC406400BD2E1B /* OculusRiftSceneKitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OculusRiftSceneKitView.m; path = ../../../OculusRiftSceneKitView.m; sourceTree = "<group>"; };
+		BC6C89B617BC4199001E36F2 /* OVR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OVR.h; path = ../../../LibOVR/Include/OVR.h; sourceTree = "<group>"; };
+		BC6C89B717BC4199001E36F2 /* OVRVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OVRVersion.h; path = ../../../LibOVR/Include/OVRVersion.h; sourceTree = "<group>"; };
+		BC6C89B817BC41DE001E36F2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		BC6C89BA17BC4219001E36F2 /* Holodeck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Holodeck.png; path = ../../OculusSceneKitTest/OculusSceneKit/Holodeck.png; sourceTree = "<group>"; };
+		BC6C89BC17BC427B001E36F2 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = ../../../LeapSDK/lib/libLeap.dylib; sourceTree = "<group>"; };
+		BC6C89BF17BC42B3001E36F2 /* Leap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Leap.h; path = ../../../../LeapSDK/include/Leap.h; sourceTree = "<group>"; };
+		BC6C89C017BC42B3001E36F2 /* LeapMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LeapMath.h; path = ../../../../LeapSDK/include/LeapMath.h; sourceTree = "<group>"; };
+		BC6C89C117BC42B3001E36F2 /* LeapObjectiveC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LeapObjectiveC.h; path = ../../../../LeapSDK/include/LeapObjectiveC.h; sourceTree = "<group>"; };
+		BC6C89C217BC42B3001E36F2 /* LeapObjectiveC.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = LeapObjectiveC.mm; path = ../../../../LeapSDK/include/LeapObjectiveC.mm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC3792CB17BC401500BD2E1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC6C89BD17BC427B001E36F2 /* libLeap.dylib in Frameworks */,
+				BC6C89B917BC41DE001E36F2 /* IOKit.framework in Frameworks */,
+				BC3792F517BC404200BD2E1B /* libovr.a in Frameworks */,
+				BC3792F317BC403800BD2E1B /* QuartzCore.framework in Frameworks */,
+				BC3792F117BC402D00BD2E1B /* OpenGL.framework in Frameworks */,
+				BC3792EF17BC402700BD2E1B /* SceneKit.framework in Frameworks */,
+				BC3792D217BC401500BD2E1B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC3792C517BC401500BD2E1B = {
+			isa = PBXGroup;
+			children = (
+				BC3792D717BC401500BD2E1B /* OculusRiftLeapMotionTest */,
+				BC3792D017BC401500BD2E1B /* Frameworks */,
+				BC3792CF17BC401500BD2E1B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BC3792CF17BC401500BD2E1B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC3792CE17BC401500BD2E1B /* OculusRiftLeapMotionTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3792D017BC401500BD2E1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC6C89BC17BC427B001E36F2 /* libLeap.dylib */,
+				BC6C89B817BC41DE001E36F2 /* IOKit.framework */,
+				BC3792F417BC404200BD2E1B /* libovr.a */,
+				BC3792F217BC403800BD2E1B /* QuartzCore.framework */,
+				BC3792F017BC402D00BD2E1B /* OpenGL.framework */,
+				BC3792EE17BC402700BD2E1B /* SceneKit.framework */,
+				BC3792D117BC401500BD2E1B /* Cocoa.framework */,
+				BC3792D317BC401500BD2E1B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC3792D317BC401500BD2E1B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC3792D417BC401500BD2E1B /* AppKit.framework */,
+				BC3792D517BC401500BD2E1B /* CoreData.framework */,
+				BC3792D617BC401500BD2E1B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		BC3792D717BC401500BD2E1B /* OculusRiftLeapMotionTest */ = {
+			isa = PBXGroup;
+			children = (
+				BC3792E317BC401500BD2E1B /* SLSAppDelegate.h */,
+				BC3792E417BC401500BD2E1B /* SLSAppDelegate.m */,
+				BC3792E617BC401500BD2E1B /* MainMenu.xib */,
+				BC3792FF17BC406F00BD2E1B /* Oculus Rift support */,
+				BC6C89BE17BC428C001E36F2 /* Leap Motion */,
+				BC3792D817BC401500BD2E1B /* Supporting Files */,
+			);
+			path = OculusRiftLeapMotionTest;
+			sourceTree = "<group>";
+		};
+		BC3792D817BC401500BD2E1B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC6C89BA17BC4219001E36F2 /* Holodeck.png */,
+				BC3792D917BC401500BD2E1B /* OculusRiftLeapMotionTest-Info.plist */,
+				BC3792DA17BC401500BD2E1B /* InfoPlist.strings */,
+				BC3792DD17BC401500BD2E1B /* main.m */,
+				BC3792DF17BC401500BD2E1B /* OculusRiftLeapMotionTest-Prefix.pch */,
+				BC3792E017BC401500BD2E1B /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BC3792FF17BC406F00BD2E1B /* Oculus Rift support */ = {
+			isa = PBXGroup;
+			children = (
+				BC6C89B617BC4199001E36F2 /* OVR.h */,
+				BC6C89B717BC4199001E36F2 /* OVRVersion.h */,
+				BC3792F617BC406400BD2E1B /* GLProgram.h */,
+				BC3792F717BC406400BD2E1B /* GLProgram.m */,
+				BC3792F817BC406400BD2E1B /* OculusRiftDevice.h */,
+				BC3792F917BC406400BD2E1B /* OculusRiftDevice.mm */,
+				BC3792FA17BC406400BD2E1B /* OculusRiftSceneKitView.h */,
+				BC3792FB17BC406400BD2E1B /* OculusRiftSceneKitView.m */,
+			);
+			name = "Oculus Rift support";
+			sourceTree = "<group>";
+		};
+		BC6C89BE17BC428C001E36F2 /* Leap Motion */ = {
+			isa = PBXGroup;
+			children = (
+				BC6C89BF17BC42B3001E36F2 /* Leap.h */,
+				BC6C89C017BC42B3001E36F2 /* LeapMath.h */,
+				BC6C89C117BC42B3001E36F2 /* LeapObjectiveC.h */,
+				BC6C89C217BC42B3001E36F2 /* LeapObjectiveC.mm */,
+			);
+			name = "Leap Motion";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC3792CD17BC401500BD2E1B /* OculusRiftLeapMotionTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC3792EB17BC401500BD2E1B /* Build configuration list for PBXNativeTarget "OculusRiftLeapMotionTest" */;
+			buildPhases = (
+				BC3792CA17BC401500BD2E1B /* Sources */,
+				BC3792CB17BC401500BD2E1B /* Frameworks */,
+				BC3792CC17BC401500BD2E1B /* Resources */,
+				BCC248D317C02DB5002E22CB /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OculusRiftLeapMotionTest;
+			productName = OculusRiftLeapMotionTest;
+			productReference = BC3792CE17BC401500BD2E1B /* OculusRiftLeapMotionTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC3792C617BC401500BD2E1B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SLS;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Sunset Lake Software LLC";
+			};
+			buildConfigurationList = BC3792C917BC401500BD2E1B /* Build configuration list for PBXProject "OculusRiftLeapMotionTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BC3792C517BC401500BD2E1B;
+			productRefGroup = BC3792CF17BC401500BD2E1B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC3792CD17BC401500BD2E1B /* OculusRiftLeapMotionTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC3792CC17BC401500BD2E1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCC248D417C02DD4002E22CB /* libLeap.dylib in Resources */,
+				BC3792DC17BC401500BD2E1B /* InfoPlist.strings in Resources */,
+				BC3792E217BC401500BD2E1B /* Credits.rtf in Resources */,
+				BC3792E817BC401500BD2E1B /* MainMenu.xib in Resources */,
+				BC6C89BB17BC4237001E36F2 /* Holodeck.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BCC248D317C02DB5002E22CB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# print some debug information\necho TARGET_BUILD_DIR=${TARGET_BUILD_DIR}\necho TARGET_NAME=${TARGET_NAME}\ncd \"${TARGET_BUILD_DIR}/${TARGET_NAME}.app/Contents/MacOS\"\nls -la\n# then remap the loader path\ninstall_name_tool -change @loader_path/libLeap.dylib @executable_path/../Resources/libLeap.dylib \"${TARGET_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC3792CA17BC401500BD2E1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC3792DE17BC401500BD2E1B /* main.m in Sources */,
+				BC3792E517BC401500BD2E1B /* SLSAppDelegate.m in Sources */,
+				BC3792FC17BC406400BD2E1B /* GLProgram.m in Sources */,
+				BC3792FD17BC406400BD2E1B /* OculusRiftDevice.mm in Sources */,
+				BC3792FE17BC406400BD2E1B /* OculusRiftSceneKitView.m in Sources */,
+				BCC248D217C02D39002E22CB /* LeapObjectiveC.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BC3792DA17BC401500BD2E1B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC3792DB17BC401500BD2E1B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BC3792E017BC401500BD2E1B /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC3792E117BC401500BD2E1B /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		BC3792E617BC401500BD2E1B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC3792E717BC401500BD2E1B /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC3792E917BC401500BD2E1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BC3792EA17BC401500BD2E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BC3792EC17BC401500BD2E1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OculusRiftLeapMotionTest/OculusRiftLeapMotionTest-Prefix.pch";
+				INFOPLIST_FILE = "OculusRiftLeapMotionTest/OculusRiftLeapMotionTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../LibOVR",
+					"$(SRCROOT)/../../../LeapSDK/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BC3792ED17BC401500BD2E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OculusRiftLeapMotionTest/OculusRiftLeapMotionTest-Prefix.pch";
+				INFOPLIST_FILE = "OculusRiftLeapMotionTest/OculusRiftLeapMotionTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../LibOVR",
+					"$(SRCROOT)/../../../LeapSDK/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC3792C917BC401500BD2E1B /* Build configuration list for PBXProject "OculusRiftLeapMotionTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC3792E917BC401500BD2E1B /* Debug */,
+				BC3792EA17BC401500BD2E1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC3792EB17BC401500BD2E1B /* Build configuration list for PBXNativeTarget "OculusRiftLeapMotionTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC3792EC17BC401500BD2E1B /* Debug */,
+				BC3792ED17BC401500BD2E1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC3792C617BC401500BD2E1B /* Project object */;
+}
