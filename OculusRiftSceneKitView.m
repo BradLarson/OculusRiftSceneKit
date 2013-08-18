@@ -90,6 +90,8 @@ NSString *const kOCVRLensCorrectionFragmentShaderString = SHADER_STRING
     SCNNode *leftEyeCameraNode, *rightEyeCameraNode;
     SCNNode *headRotationNode, *headPositionNode;
     
+    CGFloat redBackgroundComponent, blueBackgroundComponent, greenBackgroundComponent, alphaBackgroundComponent;
+    
     OculusRiftDevice *oculusRiftDevice;
 }
 
@@ -181,6 +183,11 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     
     _interpupillaryDistance = 64.0;
     _headLocation = SCNVector3Make(0.0, 0.0, 200.0);
+    
+    redBackgroundComponent = 0.0;
+    greenBackgroundComponent = 0.0;
+    blueBackgroundComponent = 1.0;
+    alphaBackgroundComponent = 1.0;
     
     CGDirectDisplayID   displayID = CGMainDisplayID();
     CVReturn            error = kCVReturnSuccess;
@@ -326,7 +333,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     glBindRenderbuffer(GL_RENDERBUFFER, 0);    
     glViewport(0, 0, (GLint)self.bounds.size.width, (GLint)self.bounds.size.height);
 
-    glClearColor(0.0, 1.0, 0.0, 1.0);
+    glClearColor(redBackgroundComponent, greenBackgroundComponent, blueBackgroundComponent, alphaBackgroundComponent);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     
     glEnableVertexAttribArray(displayPositionAttribute);
@@ -434,7 +441,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
         glViewport(0, 0, EYE_RENDER_RESOLUTION_X, EYE_RENDER_RESOLUTION_Y);
     }
     
-    glClearColor(0.0, 0.0, 1.0, 1.0);
+    glClearColor(redBackgroundComponent, greenBackgroundComponent, blueBackgroundComponent, alphaBackgroundComponent);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
@@ -469,6 +476,14 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
 #pragma mark -
 #pragma mark Accessors
 
+- (void)setBackgroundColorRed:(CGFloat)redComponent green:(CGFloat)greenComponent blue:(CGFloat)blueComponent alpha:(CGFloat)alphaComponent;
+{
+    redBackgroundComponent = redComponent;
+    blueBackgroundComponent = blueComponent;
+    greenBackgroundComponent = greenComponent;
+    alphaBackgroundComponent = alphaComponent;
+}
+
 - (void)setScene:(SCNScene *)newValue;
 {
     CVDisplayLinkStop(displayLink);
@@ -481,7 +496,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
     glUniform4f(hmdWarpParamUniform, 1.0, 0.22, 0.24, 0.0);
 
     
-    CGFloat distortionCorrection = 1.0 + 0.22 + 0.24;
+//    CGFloat distortionCorrection = 1.0 + 0.22 + 0.24;
 //    CGFloat verticalFOV = 2.0 * atan(distortionCorrection * 0.09356 / (2.0 * 0.041)) * 180.0 / M_PI;// VScreenSize = 0.09356, EyeToScreenDistance = 0.041
 //    CGFloat horizontalFOV = 2.0 * atan(distortionCorrection * 0.14976 / (2.0 * 0.041)) * 180.0 / M_PI;// HScreenSize = 0.14976, EyeToScreenDistance = 0.041
     CGFloat verticalFOV = 97.5;

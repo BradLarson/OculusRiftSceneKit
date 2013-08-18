@@ -118,7 +118,7 @@
     diffuseLightNode.light = diffuseLight;
 	diffuseLightNode.position = SCNVector3Make(0, 300, 0);
 	[scene.rootNode addChildNode:diffuseLightNode];
-    
+
     // Animate the objects
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.values = [NSArray arrayWithObjects:

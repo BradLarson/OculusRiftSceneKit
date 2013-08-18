@@ -17,6 +17,7 @@
     NSMutableArray *firstHandFingerNodes, *secondHandFingerNodes;
     LeapHand *firstHand, *secondHand;
     SCNVector3 leapMotionControllerPosition;
+    CGFloat leapMotionToVirtualWorldScalingFactor;
 }
 
 @property (assign) IBOutlet NSWindow *window;

@@ -108,7 +108,7 @@
     
     SCNTorus *torus = [SCNTorus torusWithRingRadius:60 pipeRadius:20];
     SCNNode *torusNode = [SCNNode nodeWithGeometry:torus];
-    torusNode.position = SCNVector3Make(-50, 0, -100);
+    torusNode.position = SCNVector3Make(-50, 0, -200);
     torus.materials = @[torusReflectiveMaterial];
     [objectsNode addChildNode:torusNode];
     
@@ -128,20 +128,21 @@
     [objectsNode addChildNode:pyramidNode];
     
     // Create ambient light
-    SCNLight *ambientLight = [SCNLight light];
-	SCNNode *ambientLightNode = [SCNNode node];
-    ambientLight.type = SCNLightTypeAmbient;
-	ambientLight.color = [NSColor colorWithDeviceWhite:0.1 alpha:1.0];
-	ambientLightNode.light = ambientLight;
-    [scene.rootNode addChildNode:ambientLightNode];
+//    SCNLight *ambientLight = [SCNLight light];
+//	SCNNode *ambientLightNode = [SCNNode node];
+//    ambientLight.type = SCNLightTypeAmbient;
+//	ambientLight.color = [NSColor colorWithDeviceWhite:0.1 alpha:1.0];
+//	ambientLightNode.light = ambientLight;
+//    [scene.rootNode addChildNode:ambientLightNode];
     
     // Create a diffuse light
-	SCNLight *diffuseLight = [SCNLight light];
-    SCNNode *diffuseLightNode = [SCNNode node];
-    diffuseLight.type = SCNLightTypeOmni;
-    diffuseLightNode.light = diffuseLight;
-	diffuseLightNode.position = SCNVector3Make(0, 300, 0);
-	[scene.rootNode addChildNode:diffuseLightNode];
+//	SCNLight *diffuseLight = [SCNLight light];
+//    SCNNode *diffuseLightNode = [SCNNode node];
+//    diffuseLight.type = SCNLightTypeOmni;
+//	diffuseLight.color = [NSColor colorWithDeviceWhite:0.2 alpha:1.0];
+//    diffuseLightNode.light = diffuseLight;
+//	diffuseLightNode.position = SCNVector3Make(0, 300, 0);
+//	[scene.rootNode addChildNode:diffuseLightNode];
     
     // Animate the objects
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
@@ -177,10 +178,20 @@
 {
     // This will need to be adjusted for the relative position of the controller to the Rift
     leapMotionControllerPosition.x = 0.0;
-    leapMotionControllerPosition.y = 0.0;
-    leapMotionControllerPosition.z = 0.0;
+    leapMotionControllerPosition.y = -400.0;
+    leapMotionControllerPosition.z = -200.0;
+    leapMotionToVirtualWorldScalingFactor = 1.5;
+    
+    SCNMaterial *handMaterial = [SCNMaterial material];
+    handMaterial.diffuse.contents = [NSColor colorWithDeviceRed:0.38 green:0.70 blue:0.76 alpha:1.0];
+    handMaterial.emission.contents = [NSColor colorWithDeviceRed:0.38 green:0.70 blue:0.76 alpha:1.0];
+    handMaterial.emission.intensity = 0.5;
+//    handMaterial.specular.contents = [NSColor whiteColor];
+//    handMaterial.shininess = 20.0;
     
     SCNSphere *handSphere = [SCNSphere sphereWithRadius:30.0];
+    handSphere.materials = @[handMaterial];
+
     firstHandNode = [SCNNode nodeWithGeometry:handSphere];
     firstHandNode.opacity = 0.0;
     [self.oculusView.scene.rootNode addChildNode:firstHandNode];
@@ -195,36 +206,58 @@
     for (unsigned int currentFinger = 0; currentFinger < 5; currentFinger++)
     {
         SCNBox *fingerBox = [SCNBox boxWithWidth:10 height:10 length:30 chamferRadius:0.0];
+        fingerBox.materials = @[handMaterial];
         SCNNode *fingerNode = [SCNNode nodeWithGeometry:fingerBox];
         fingerNode.opacity = 0.0;
-
         [firstHandFingerNodes addObject:fingerNode];
         [self.oculusView.scene.rootNode addChildNode:fingerNode];
 
         fingerBox = [SCNBox boxWithWidth:10 height:10 length:30 chamferRadius:0.0];
+        fingerBox.materials = @[handMaterial];
         fingerNode = [SCNNode nodeWithGeometry:fingerBox];
         fingerNode.opacity = 0.0;
-
         [secondHandFingerNodes addObject:fingerNode];
         [self.oculusView.scene.rootNode addChildNode:fingerNode];
     }
+
+    // Add a light source, centered on the hands
+    SCNNode *lightNode = [SCNNode node];
+    lightNode.light = [SCNLight light];
+    lightNode.light.color = [NSColor colorWithDeviceRed:0.38 green:0.70 blue:0.76 alpha:1.0];
+    lightNode.light.type = SCNLightTypeOmni;
+    [lightNode.light setAttribute:@800 forKey:SCNLightAttenuationEndKey];
+    [lightNode.light setAttribute:@100 forKey:SCNLightAttenuationStartKey];
+
+    [firstHandNode addChildNode:lightNode];
+
+    SCNNode *lightNode2 = [SCNNode node];
+    lightNode2.light = [SCNLight light];
+    lightNode2.light.color = [NSColor colorWithDeviceRed:0.38 green:0.70 blue:0.76 alpha:1.0];
+    lightNode2.light.type = SCNLightTypeOmni;
+    [lightNode2.light setAttribute:@800 forKey:SCNLightAttenuationEndKey];
+    [lightNode2.light setAttribute:@100 forKey:SCNLightAttenuationStartKey];
+    
+    [secondHandNode addChildNode:lightNode2];
 }
 
 - (void)moveFingers:(NSMutableArray *)fingerNodes andHand:(SCNNode *)handNode toMatchLeapHand:(LeapHand *)leapHand;
 {
     LeapVector *handPosition = leapHand.palmPosition;
     handNode.opacity = 1.0;
-    handNode.position = SCNVector3Make(handPosition.x + leapMotionControllerPosition.x, handPosition.y + leapMotionControllerPosition.y, handPosition.z + leapMotionControllerPosition.z);
+    handNode.position = SCNVector3Make(handPosition.x * leapMotionToVirtualWorldScalingFactor + leapMotionControllerPosition.x, handPosition.y * leapMotionToVirtualWorldScalingFactor + leapMotionControllerPosition.y, handPosition.z * leapMotionToVirtualWorldScalingFactor + leapMotionControllerPosition.z);
     
     NSUInteger numberOfFingers = MIN([[leapHand fingers] count], 5);
     for (NSUInteger currentFingerIndex = 0; currentFingerIndex < numberOfFingers; currentFingerIndex++)
     {
         SCNNode *currentFingerNode = [fingerNodes objectAtIndex:currentFingerIndex];
+        [SCNTransaction begin];
+        [SCNTransaction setAnimationDuration:0.35];
         currentFingerNode.opacity = 1.0;
+        [SCNTransaction commit];
         
         LeapFinger *currentFinger = [[leapHand fingers] objectAtIndex:currentFingerIndex];
         LeapVector *fingerPosition = currentFinger.tipPosition;
-        currentFingerNode.position = SCNVector3Make(fingerPosition.x + leapMotionControllerPosition.x, fingerPosition.y + leapMotionControllerPosition.y, fingerPosition.z + leapMotionControllerPosition.z);
+        currentFingerNode.position = SCNVector3Make(fingerPosition.x * leapMotionToVirtualWorldScalingFactor + leapMotionControllerPosition.x, fingerPosition.y * leapMotionToVirtualWorldScalingFactor + leapMotionControllerPosition.y, fingerPosition.z * leapMotionToVirtualWorldScalingFactor + leapMotionControllerPosition.z);
     }
     
     if (numberOfFingers < 5)
@@ -232,8 +265,11 @@
         for (NSUInteger currentInvisibleFingerIndex = numberOfFingers; currentInvisibleFingerIndex < 5; currentInvisibleFingerIndex++)
         {
             SCNNode *currentFingerNode = [fingerNodes objectAtIndex:currentInvisibleFingerIndex];
+            [SCNTransaction begin];
+            [SCNTransaction setAnimationDuration:0.35];
             currentFingerNode.opacity = 0.0;
-        }        
+            [SCNTransaction commit];
+        }
     }
 }
 
@@ -289,7 +325,6 @@
 
 - (void)onFrame:(NSNotification *)notification;
 {
-    NSLog(@"New Leap frame");
     LeapController *aController = (LeapController *)[notification object];
     
     // Get the most recent frame and report some basic information

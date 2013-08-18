@@ -1,0 +1,408 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC46AF4E17C04CCF00149B18 /* boardshadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46AF4A17C04C8F00149B18 /* boardshadow.png */; };
+		BC46AF4F17C04CD200149B18 /* checker.png in Resources */ = {isa = PBXBuildFile; fileRef = BC46AF4B17C04C8F00149B18 /* checker.png */; };
+		BC46AF5017C04CD400149B18 /* chess.dae in Resources */ = {isa = PBXBuildFile; fileRef = BC46AF4C17C04C8F00149B18 /* chess.dae */; };
+		BC46AF5117C04CD600149B18 /* wood_antiaris.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC46AF4D17C04C8F00149B18 /* wood_antiaris.jpg */; };
+		BC6C083817B6D2A500A20AD6 /* OculusRiftSceneKitView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C083717B6D1AD00A20AD6 /* OculusRiftSceneKitView.m */; };
+		BC6C083B17B6E58E00A20AD6 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C083A17B6E57E00A20AD6 /* GLProgram.m */; };
+		BC6C083D17B6E83F00A20AD6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6C083C17B6E83F00A20AD6 /* OpenGL.framework */; };
+		BCAA76AB17B5DF3200E25C2A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAA76AA17B5DF3200E25C2A /* Cocoa.framework */; };
+		BCAA76B517B5DF3200E25C2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCAA76B317B5DF3200E25C2A /* InfoPlist.strings */; };
+		BCAA76B717B5DF3200E25C2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA76B617B5DF3200E25C2A /* main.m */; };
+		BCAA76BB17B5DF3200E25C2A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BCAA76B917B5DF3200E25C2A /* Credits.rtf */; };
+		BCAA76BE17B5DF3200E25C2A /* SLSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA76BD17B5DF3200E25C2A /* SLSAppDelegate.m */; };
+		BCAA76C117B5DF3200E25C2A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCAA76BF17B5DF3200E25C2A /* MainMenu.xib */; };
+		BCAA76C817B5DF5700E25C2A /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAA76C717B5DF5700E25C2A /* SceneKit.framework */; };
+		BCAA76CA17B5DF6500E25C2A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAA76C917B5DF6500E25C2A /* QuartzCore.framework */; };
+		BCD6161117BB301B005535A1 /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD6161017BB301A005535A1 /* libovr.a */; };
+		BCD6162317BB320D005535A1 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD6162217BB320D005535A1 /* GLKit.framework */; };
+		BCD6162517BB3212005535A1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD6162417BB3212005535A1 /* IOKit.framework */; };
+		BCD6162617BB38FB005535A1 /* OculusRiftDevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = BCD6160D17BB2E5C005535A1 /* OculusRiftDevice.mm */; settings = {COMPILER_FLAGS = "-fno-rtti"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BC46AF4A17C04C8F00149B18 /* boardshadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = boardshadow.png; path = chessboard/boardshadow.png; sourceTree = "<group>"; };
+		BC46AF4B17C04C8F00149B18 /* checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checker.png; path = chessboard/checker.png; sourceTree = "<group>"; };
+		BC46AF4C17C04C8F00149B18 /* chess.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; name = chess.dae; path = chessboard/chess.dae; sourceTree = "<group>"; };
+		BC46AF4D17C04C8F00149B18 /* wood_antiaris.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wood_antiaris.jpg; path = chessboard/wood_antiaris.jpg; sourceTree = "<group>"; };
+		BC6C083617B6D1AD00A20AD6 /* OculusRiftSceneKitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OculusRiftSceneKitView.h; path = ../../../OculusRiftSceneKitView.h; sourceTree = "<group>"; };
+		BC6C083717B6D1AD00A20AD6 /* OculusRiftSceneKitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OculusRiftSceneKitView.m; path = ../../../OculusRiftSceneKitView.m; sourceTree = "<group>"; };
+		BC6C083917B6E57E00A20AD6 /* GLProgram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLProgram.h; path = ../../../GLProgram.h; sourceTree = "<group>"; };
+		BC6C083A17B6E57E00A20AD6 /* GLProgram.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GLProgram.m; path = ../../../GLProgram.m; sourceTree = "<group>"; };
+		BC6C083C17B6E83F00A20AD6 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		BCAA76A717B5DF3200E25C2A /* ChessboardTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessboardTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCAA76AA17B5DF3200E25C2A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		BCAA76AD17B5DF3200E25C2A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		BCAA76AE17B5DF3200E25C2A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BCAA76AF17B5DF3200E25C2A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BCAA76B217B5DF3200E25C2A /* ChessboardTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChessboardTest-Info.plist"; sourceTree = "<group>"; };
+		BCAA76B417B5DF3200E25C2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BCAA76B617B5DF3200E25C2A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BCAA76B817B5DF3200E25C2A /* ChessboardTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChessboardTest-Prefix.pch"; sourceTree = "<group>"; };
+		BCAA76BA17B5DF3200E25C2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		BCAA76BC17B5DF3200E25C2A /* SLSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLSAppDelegate.h; sourceTree = "<group>"; };
+		BCAA76BD17B5DF3200E25C2A /* SLSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLSAppDelegate.m; sourceTree = "<group>"; };
+		BCAA76C017B5DF3200E25C2A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BCAA76C717B5DF5700E25C2A /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		BCAA76C917B5DF6500E25C2A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BCD6160C17BB2E5C005535A1 /* OculusRiftDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OculusRiftDevice.h; path = ../../OculusRiftDevice.h; sourceTree = "<group>"; };
+		BCD6160D17BB2E5C005535A1 /* OculusRiftDevice.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = OculusRiftDevice.mm; path = ../../OculusRiftDevice.mm; sourceTree = "<group>"; };
+		BCD6161017BB301A005535A1 /* libovr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libovr.a; path = ../../LibOVR/libovr.a; sourceTree = "<group>"; };
+		BCD6161217BB3044005535A1 /* OVR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OVR.h; path = ../../LibOVR/Include/OVR.h; sourceTree = "<group>"; };
+		BCD6161317BB3044005535A1 /* OVRVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OVRVersion.h; path = ../../LibOVR/Include/OVRVersion.h; sourceTree = "<group>"; };
+		BCD6162217BB320D005535A1 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		BCD6162417BB3212005535A1 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCAA76A417B5DF3200E25C2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD6162517BB3212005535A1 /* IOKit.framework in Frameworks */,
+				BCD6162317BB320D005535A1 /* GLKit.framework in Frameworks */,
+				BCD6161117BB301B005535A1 /* libovr.a in Frameworks */,
+				BC6C083D17B6E83F00A20AD6 /* OpenGL.framework in Frameworks */,
+				BCAA76CA17B5DF6500E25C2A /* QuartzCore.framework in Frameworks */,
+				BCAA76C817B5DF5700E25C2A /* SceneKit.framework in Frameworks */,
+				BCAA76AB17B5DF3200E25C2A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC46AF4917C04C5B00149B18 /* ChessboardModels */ = {
+			isa = PBXGroup;
+			children = (
+				BC46AF4A17C04C8F00149B18 /* boardshadow.png */,
+				BC46AF4B17C04C8F00149B18 /* checker.png */,
+				BC46AF4C17C04C8F00149B18 /* chess.dae */,
+				BC46AF4D17C04C8F00149B18 /* wood_antiaris.jpg */,
+			);
+			name = ChessboardModels;
+			sourceTree = "<group>";
+		};
+		BCAA769E17B5DF3200E25C2A = {
+			isa = PBXGroup;
+			children = (
+				BCAA76B017B5DF3200E25C2A /* OculusSceneKitTest */,
+				BCAA76A917B5DF3200E25C2A /* Frameworks */,
+				BCAA76A817B5DF3200E25C2A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BCAA76A817B5DF3200E25C2A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCAA76A717B5DF3200E25C2A /* ChessboardTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCAA76A917B5DF3200E25C2A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCD6162417BB3212005535A1 /* IOKit.framework */,
+				BCD6162217BB320D005535A1 /* GLKit.framework */,
+				BCD6161017BB301A005535A1 /* libovr.a */,
+				BC6C083C17B6E83F00A20AD6 /* OpenGL.framework */,
+				BCAA76C917B5DF6500E25C2A /* QuartzCore.framework */,
+				BCAA76C717B5DF5700E25C2A /* SceneKit.framework */,
+				BCAA76AA17B5DF3200E25C2A /* Cocoa.framework */,
+				BCAA76AC17B5DF3200E25C2A /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCAA76AC17B5DF3200E25C2A /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCAA76AD17B5DF3200E25C2A /* AppKit.framework */,
+				BCAA76AE17B5DF3200E25C2A /* CoreData.framework */,
+				BCAA76AF17B5DF3200E25C2A /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		BCAA76B017B5DF3200E25C2A /* OculusSceneKitTest */ = {
+			isa = PBXGroup;
+			children = (
+				BCAA76BC17B5DF3200E25C2A /* SLSAppDelegate.h */,
+				BCAA76BD17B5DF3200E25C2A /* SLSAppDelegate.m */,
+				BCAA76BF17B5DF3200E25C2A /* MainMenu.xib */,
+				BC46AF4917C04C5B00149B18 /* ChessboardModels */,
+				BCAA76B117B5DF3200E25C2A /* Supporting Files */,
+				BCD6160E17BB2FEE005535A1 /* Head tracking */,
+				BCD6160F17BB2FFF005535A1 /* Rendering */,
+			);
+			name = OculusSceneKitTest;
+			path = OculusSceneKit;
+			sourceTree = "<group>";
+		};
+		BCAA76B117B5DF3200E25C2A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BCAA76B217B5DF3200E25C2A /* ChessboardTest-Info.plist */,
+				BCAA76B317B5DF3200E25C2A /* InfoPlist.strings */,
+				BCAA76B617B5DF3200E25C2A /* main.m */,
+				BCAA76B817B5DF3200E25C2A /* ChessboardTest-Prefix.pch */,
+				BCAA76B917B5DF3200E25C2A /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BCD6160E17BB2FEE005535A1 /* Head tracking */ = {
+			isa = PBXGroup;
+			children = (
+				BCD6161217BB3044005535A1 /* OVR.h */,
+				BCD6161317BB3044005535A1 /* OVRVersion.h */,
+				BCD6160C17BB2E5C005535A1 /* OculusRiftDevice.h */,
+				BCD6160D17BB2E5C005535A1 /* OculusRiftDevice.mm */,
+			);
+			name = "Head tracking";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		BCD6160F17BB2FFF005535A1 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				BC6C083617B6D1AD00A20AD6 /* OculusRiftSceneKitView.h */,
+				BC6C083717B6D1AD00A20AD6 /* OculusRiftSceneKitView.m */,
+				BC6C083917B6E57E00A20AD6 /* GLProgram.h */,
+				BC6C083A17B6E57E00A20AD6 /* GLProgram.m */,
+			);
+			name = Rendering;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BCAA76A617B5DF3200E25C2A /* ChessboardTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCAA76C417B5DF3200E25C2A /* Build configuration list for PBXNativeTarget "ChessboardTest" */;
+			buildPhases = (
+				BCAA76A317B5DF3200E25C2A /* Sources */,
+				BCAA76A417B5DF3200E25C2A /* Frameworks */,
+				BCAA76A517B5DF3200E25C2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChessboardTest;
+			productName = OculusSceneKit;
+			productReference = BCAA76A717B5DF3200E25C2A /* ChessboardTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCAA769F17B5DF3200E25C2A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SLS;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Sunset Lake Software LLC";
+			};
+			buildConfigurationList = BCAA76A217B5DF3200E25C2A /* Build configuration list for PBXProject "ChessboardTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BCAA769E17B5DF3200E25C2A;
+			productRefGroup = BCAA76A817B5DF3200E25C2A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCAA76A617B5DF3200E25C2A /* ChessboardTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCAA76A517B5DF3200E25C2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCAA76B517B5DF3200E25C2A /* InfoPlist.strings in Resources */,
+				BCAA76BB17B5DF3200E25C2A /* Credits.rtf in Resources */,
+				BCAA76C117B5DF3200E25C2A /* MainMenu.xib in Resources */,
+				BC46AF4E17C04CCF00149B18 /* boardshadow.png in Resources */,
+				BC46AF4F17C04CD200149B18 /* checker.png in Resources */,
+				BC46AF5017C04CD400149B18 /* chess.dae in Resources */,
+				BC46AF5117C04CD600149B18 /* wood_antiaris.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCAA76A317B5DF3200E25C2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCAA76B717B5DF3200E25C2A /* main.m in Sources */,
+				BCAA76BE17B5DF3200E25C2A /* SLSAppDelegate.m in Sources */,
+				BC6C083817B6D2A500A20AD6 /* OculusRiftSceneKitView.m in Sources */,
+				BC6C083B17B6E58E00A20AD6 /* GLProgram.m in Sources */,
+				BCD6162617BB38FB005535A1 /* OculusRiftDevice.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BCAA76B317B5DF3200E25C2A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCAA76B417B5DF3200E25C2A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BCAA76B917B5DF3200E25C2A /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCAA76BA17B5DF3200E25C2A /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		BCAA76BF17B5DF3200E25C2A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCAA76C017B5DF3200E25C2A /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BCAA76C217B5DF3200E25C2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BCAA76C317B5DF3200E25C2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BCAA76C517B5DF3200E25C2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OculusSceneKit/ChessboardTest-Prefix.pch";
+				INFOPLIST_FILE = "OculusSceneKit/ChessboardTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../LibOVR",
+				);
+				PRODUCT_NAME = ChessboardTest;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BCAA76C617B5DF3200E25C2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OculusSceneKit/ChessboardTest-Prefix.pch";
+				INFOPLIST_FILE = "OculusSceneKit/ChessboardTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../LibOVR",
+				);
+				PRODUCT_NAME = ChessboardTest;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCAA76A217B5DF3200E25C2A /* Build configuration list for PBXProject "ChessboardTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCAA76C217B5DF3200E25C2A /* Debug */,
+				BCAA76C317B5DF3200E25C2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCAA76C417B5DF3200E25C2A /* Build configuration list for PBXNativeTarget "ChessboardTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCAA76C517B5DF3200E25C2A /* Debug */,
+				BCAA76C617B5DF3200E25C2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCAA769F17B5DF3200E25C2A /* Project object */;
+}

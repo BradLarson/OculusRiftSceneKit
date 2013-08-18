@@ -11,5 +11,6 @@
 @property(readwrite, nonatomic) SCNVector3 headLocation;
 
 - (CVReturn)renderTime:(const CVTimeStamp *)timeStamp;
+- (void)setBackgroundColorRed:(CGFloat)redComponent green:(CGFloat)greenComponent blue:(CGFloat)blueComponent alpha:(CGFloat)alphaComponent;
 
 @end
